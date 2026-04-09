@@ -1,0 +1,19 @@
+
+trigger:
+- main
+
+pool:
+  name: ASUS-ZENBOOK
+
+steps:
+- script: dotnet build
+  displayName: Build .net app
+
+- script: dotnet publish -o $(Build.ArtifactStagingDirectory)
+  displayName: Publish app
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'dotnetapp'
+    publishLocation: 'Container'
