@@ -5,14 +5,11 @@ pool:
   name: Default
 
 steps:
-- script: dotnet build QuizApp/QuizApp.csproj
-  displayName: Build .NET app
-
-- script: dotnet publish QuizApp/QuizApp.csproj -o $(Build.ArtifactStagingDirectory)
-  displayName: Publish app
+- script: echo "Database access has already been done on April 6, 2026 by Kendra Matthews"
+  displayName: Show database message
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'dotnetapp'
+    PathtoPublish: '.'
+    ArtifactName: 'quiz-files'
     publishLocation: 'Container'
